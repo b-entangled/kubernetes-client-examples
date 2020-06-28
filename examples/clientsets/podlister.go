@@ -26,11 +26,11 @@ func main() {
 	}
 
 	// Create Clientset for Pods on default Namespace
-	podsClient := clientset.CoreV1().Pods(apiv1.NamespaceDefault)
+	podsClientDefault := clientset.CoreV1().Pods(apiv1.NamespaceDefault)
 	// List Pods
 	fmt.Printf("Listing Pods in namespace %q:\n", apiv1.NamespaceDefault)
 
-	list, err := podsClient.List(context.TODO(), metav1.ListOptions{})
+	list, err := podsClientDefault.List(context.TODO(), metav1.ListOptions{})
 	if err != nil {
 		panic(err)
 	}
@@ -43,10 +43,10 @@ func main() {
 
 
 		// Create Clientset for Pods on all Namespace
-		podsClient = clientset.CoreV1().Pods(apiv1.NamespaceAll)
+		podsClientAll := clientset.CoreV1().Pods(apiv1.NamespaceAll)
 		// List Pods
 		fmt.Printf("Listing Pods in namespace %q:\n", apiv1.NamespaceAll)
-		list, err = podsClient.List(context.TODO(), metav1.ListOptions{})
+		list, err = podsClientAll.List(context.TODO(), metav1.ListOptions{})
 		if err != nil {
 			panic(err)
 		}
