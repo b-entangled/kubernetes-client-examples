@@ -1,8 +1,8 @@
 package clientset
 
 import (
-	restclient "k8s.io/client-go/rest"
 	"k8s.io/client-go/kubernetes"
+	restclient "k8s.io/client-go/rest"
 )
 
 func GetNewClientset(config *restclient.Config) (*kubernetes.Clientset, error) {

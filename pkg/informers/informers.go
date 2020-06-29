@@ -1,9 +1,9 @@
 package informers
 
 import (
-	"time"
-	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/informers"
+	"k8s.io/client-go/kubernetes"
+	"time"
 )
 
 type SharedInformer struct {

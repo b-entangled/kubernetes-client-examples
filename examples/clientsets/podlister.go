@@ -41,21 +41,20 @@ func main() {
 
 	fmt.Println("Listed Pods on default Namespace.")
 
+	// Create Clientset for Pods on all Namespace
+	podsClientAll := clientset.CoreV1().Pods(apiv1.NamespaceAll)
+	// List Pods
+	fmt.Printf("Listing Pods in namespace %q:\n", apiv1.NamespaceAll)
+	list, err = podsClientAll.List(context.TODO(), metav1.ListOptions{})
+	if err != nil {
+		panic(err)
+	}
 
-		// Create Clientset for Pods on all Namespace
-		podsClientAll := clientset.CoreV1().Pods(apiv1.NamespaceAll)
-		// List Pods
-		fmt.Printf("Listing Pods in namespace %q:\n", apiv1.NamespaceAll)
-		list, err = podsClientAll.List(context.TODO(), metav1.ListOptions{})
-		if err != nil {
-			panic(err)
-		}
+	fmt.Println("Number of Pods in all Namespace is : ", len(list.Items))
 
-		fmt.Println("Number of Pods in all Namespace is : ", len(list.Items))
+	for _, d := range list.Items {
+		fmt.Printf(" * %s \n", d.Name)
+	}
 
-		for _, d := range list.Items {
-			fmt.Printf(" * %s \n", d.Name)
-		}
-	
-		fmt.Println("Listed Pods on all Namespace.")
+	fmt.Println("Listed Pods on all Namespace.")
 }

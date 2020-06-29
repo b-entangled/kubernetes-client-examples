@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"k8s.io/client-go/tools/cache"
-	apiv1 "k8s.io/api/core/v1"
 	"github.com/b-entangled/kubernetes-client-examples/pkg/clientset"
 	"github.com/b-entangled/kubernetes-client-examples/pkg/config"
-	"k8s.io/client-go/informers/core/v1"
+	apiv1 "k8s.io/api/core/v1"
 	mv1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/informers/core/v1"
+	"k8s.io/client-go/tools/cache"
+	"os"
 )
 
 func main() {

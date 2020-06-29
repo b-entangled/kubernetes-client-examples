@@ -1,13 +1,13 @@
 package main
 
 import (
+	"github.com/b-entangled/kubernetes-client-examples/pkg/clientset"
+	"github.com/b-entangled/kubernetes-client-examples/pkg/config"
+	"github.com/b-entangled/kubernetes-client-examples/pkg/informers"
+	"k8s.io/apimachinery/pkg/labels"
 	"log"
 	"os"
 	"time"
-	"github.com/b-entangled/kubernetes-client-examples/pkg/clientset"
-	"github.com/b-entangled/kubernetes-client-examples/pkg/config"
-	"k8s.io/apimachinery/pkg/labels"
-	"github.com/b-entangled/kubernetes-client-examples/pkg/informers"
 )
 
 func main() {
@@ -31,10 +31,10 @@ func main() {
 	informers.SharedInformerFactory.Start(stopper)
 	time.Sleep(1 * time.Second)
 	pods, err := lister.List(labels.Everything())
-	
-	for _, p := range pods{
+
+	for _, p := range pods {
 		log.Printf("%+v\n", p.Name)
 	}
-	
+
 	log.Println("Completed Listing Pod in all Namespace")
 }

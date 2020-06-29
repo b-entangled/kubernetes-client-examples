@@ -4,11 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"log"
 	apiv1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
+	"log"
 )
 
 func main() {
@@ -34,11 +34,11 @@ func main() {
 	}
 	cha := watcher.ResultChan()
 	for event := range cha {
-        pod, ok := event.Object.(*apiv1.Pod)
-        if !ok {
-            log.Fatal("unexpected type")
+		pod, ok := event.Object.(*apiv1.Pod)
+		if !ok {
+			log.Fatal("unexpected type")
 		}
 		log.Println(event.Type)
-        log.Println(pod.GetName())
-    }
+		log.Println(pod.GetName())
+	}
 }
