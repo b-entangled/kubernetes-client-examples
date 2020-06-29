@@ -27,7 +27,6 @@ func main() {
 	addFunc := func(obj interface{}) {
 		mObj := obj.(metav1.Object)
 		log.Printf("New ConfigMap Added to Store: %s\n", mObj.GetName())
-
 	}
 
 	// addFunc called when existing configmap is deleted from api-server
