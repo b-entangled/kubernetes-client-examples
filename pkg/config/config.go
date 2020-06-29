@@ -6,6 +6,9 @@ import (
 )
 
 func GetNewConfig(kubeconfig string) (*restclient.Config, error) {
+	if kubeconfig == ""{
+		return restclient.InClusterConfig()
+	}
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	return config, err
 }

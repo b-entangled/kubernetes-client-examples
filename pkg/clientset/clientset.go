@@ -9,3 +9,4 @@ func GetNewClientset(config *restclient.Config) (*kubernetes.Clientset, error) {
 	clientset, err := kubernetes.NewForConfig(config)
 	return clientset, err
 }
+
